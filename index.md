@@ -1,37 +1,43 @@
-## Welcome to GitHub Pages
+<h1>電路實驗專題-十秒挑戰</h1>
 
-You can use the [editor on GitHub](https://github.com/yuluouo/Ten-seconds-challenge/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+組員姓名：
+陳冠鈞(U10616003)何懿儒(U10616009)黃軍愷(U10616035)蕭兆軒(U10816031)劉純瑄(U10816025)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<h1>(一)摘要</h1>
+	在知名動畫《名偵探柯南劇場版-通往天國的倒數計時》劇情中，一家企業老闆舉辦了一個默數十秒的遊戲，  
+	在遊戲中只要數的秒數最接近於正確的十秒，就可以獲得一輛高級跑車。這個遊戲考驗了一個人的專注力和對時間把控的能力。  
+	本組將使用QuartusII與CPLD實習模板，還原這個十秒挑戰賽的遊戲。
+  
+<h1>(二)製作目的</h1>
+	本學期實習過各種元件的使用，並將之燒綠於硬體來呈現實際的演示。因此報告的製作目的希望能具體使用這些所學的元件功能，  
+	設計並開發成一套日常生活的趣味遊戲。欲以實習面板來呈現電影中的遊戲內容，將所學的電路實驗知識應用於生活所見之遊戲開發。
 
-### Markdown
+<h1>(三)方法探討</h1>
+	欲以實習面板呈現出計時挑戰遊戲，則需先分析遊戲的遊玩方法與過程所需功能。  
+	在電影中遊戲進行方式為企業老闆喊開始的一瞬間計時，而玩家則於心中默數十秒，最後根據玩家喊「到」的時間點，做出成績評量。  
+	根據上述可以討論出，遊戲過程需要實習面板能夠計數至少0~15秒之功能、玩家按按鈕控制遊戲開始之功能、  
+	玩家按按鈕表示默數結束之功能、根據玩家默數結果所接近十秒的程度，給予玩家回饋的面板顯示之功能等等。
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<h1>(四)提出方法及步驟</h1>
+	根據方法探討中列出的計時挑戰賽遊戲所需功能，本單元將先逐個提出各類功能之呈現原理方法，  
+	再根據每個方法規劃所需原件、輸入與輸出，最後探討實現方式與線路電路圖設計構思。	
+  
+<h2>(1)秒數計時功能：</h2>
+	遊戲中在玩家以按鈕表達遊戲開始之際，實習面板將啟動秒數計數。  
+	此秒數計數器功能的設計方法為使用至少4個D正反器，記錄4個位元來表示16種狀態，  
+	並使用卡諾圖化簡真值表設計電路圖，完成能計數0~15秒的計數器元件。  
+	秒數計數器在時脈輸入部分使用Clock generator元件以1Hz輸出點接出來控制秒數計數器輸出變化時間為每一秒。
+  
+<h2>(2)按鈕控制遊戲開始之功能：</h2>
+	設置一按鈕作為輸入控制，按鈕按下後數值為1時，秒數計數器才開始運作。  
+	此處可將按鈕輸入控制與時脈以and邏輯閘相連，方能設計以按鈕輸入啟動秒數計時器。
+  
+<h2>(3)按鈕控制默數結束，存儲秒數計數器結果之功能：</h2>
+	設置一按鈕作為輸入控制，按鈕按下後停止秒數計數器的運作，可使用and邏輯閘與not閘來終止秒數計數器的時脈輸入運作。  
+	按鈕按下的當下，秒數計數器最後的狀態將存於暫存器元件中，以提供評量與成績結果顯示。
+  
+<h2>(4)成績結果與面板回饋：</h2>
+	可以使用面板中的七段顯示器與紅黃綠LED原件顯示計數的成績結果，並根據秒數的成績分成數個成績區段(極其精準、精準、普通、差勁)，  
+	分別以不同的表情符號(笑臉、淺笑、普通、哭臉)顯示於8x8點矩陣LED顯示器上。
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yuluouo/Ten-seconds-challenge/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
